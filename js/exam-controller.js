@@ -60,7 +60,7 @@ function loadexams() {
 
 function loadCounts() {
    
-    alert("rrrrrrrrrrrrrrr");
+    //alert("rrrrrrrrrrrrrrr");
 
     var ajaxConfig3 = {
         method:'GET',
