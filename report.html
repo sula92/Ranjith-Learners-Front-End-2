@@ -139,27 +139,27 @@
         <div class="statistics-details d-flex align-items-center justify-content-between">
           <div>
             <p class="statistics-title">Total Income</p>
-            <h3 class="rate-percentage" id="totpart">32.53%</h3>
+            <h3 class="rate-percentage" id="totinc">32.53%</h3>
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
           </div>
           <div>
             <p class="statistics-title">Total Salleries Paid</p>
-            <h3 class="rate-percentage" id="totpass">7,682</h3>
+            <h3 class="rate-percentage" id="totsal">7,682</h3>
             <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
           </div>
           <div>
             <p class="statistics-title">Total Other Expenses</p>
-            <h3 class="rate-percentage" id="fail">68.8</h3>
+            <h3 class="rate-percentage" id="tototherexp">68.8</h3>
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
           </div>
           <div class="d-none d-md-block">
-            <p class="statistics-title">Total profit</p>
-            <h3 class="rate-percentage" id="totab">2m:35s</h3>
+            <p class="statistics-title">Total Expenses</p>
+            <h3 class="rate-percentage" id="totexp">2m:35s</h3>
             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
           </div>
           <div class="d-none d-md-block">
-            <p class="statistics-title">Pending</p>
-            <h3 class="rate-percentage" id="totpend">68.8</h3>
+            <p class="statistics-title">Total Profits</p>
+            <h3 class="rate-percentage" id="totprof">68.8</h3>
             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
           </div>
         
@@ -236,16 +236,16 @@
 
       function drawChart() {
 
-        let x=parseInt(document.getElementById("totpass").innerHTML);
-        let y=parseInt(document.getElementById("totpart").innerHTML);
-        let z=parseInt(document.getElementById("fail").innerHTML);
-        let q=parseInt(document.getElementById("totab").innerHTML);
+        let x=parseInt(document.getElementById("totinc").innerHTML);
+        let y=parseInt(document.getElementById("totexp").innerHTML);
+        let z=parseInt(document.getElementById("totprof").innerHTML);
+        
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Percentage'],
-          ['Pass',     x],
-          ['Fail',      z],
-          ['Absent',  q],
+          ['Total Income',     x],
+          ['Total Expenses',      z],
+          //['Profits',  q]
          
         ]);
 
@@ -278,17 +278,19 @@
     function drawChart() {
 
 
-    let x=parseInt(document.getElementById("totpass").innerHTML);
-    let y=parseInt(document.getElementById("totpart").innerHTML);
-    let z=parseInt(document.getElementById("fail").innerHTML);
-    let q=parseInt(document.getElementById("totab").innerHTML);
+    let x=parseInt(document.getElementById("totinc").innerHTML);
+    let y=parseInt(document.getElementById("totsal").innerHTML);
+    let z=parseInt(document.getElementById("tototherexp").innerHTML);
+    let q=parseInt(document.getElementById("totexp").innerHTML);
+    let r=parseInt(document.getElementById("totprof").innerHTML);
 
       var data = google.visualization.arrayToDataTable([
         ["STATUS", "COUNT", { role: "style" } ],
-		["TOTAL", y, "black"],
-        ["PASS", x, "blue"],
-        ["FAIL", z, "red"],
-        ["ABSENT", q, "green"]
+		     ["TOT INCOME", x, "black"],
+        ["SALARIES", y, "blue"],
+        ["OTHER EXP", z, "red"],
+        ["TOT EXP", q, "green"],
+        ["PROFITS", r, "purple"]
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -319,6 +321,101 @@
       <div class="col-md-1"></div>
 
     </div>
+
+
+    <script>
+
+$(document).ready(function () {
+    loadexams(0);
+    loadexp(0);
+    loadCounts(0);
+})
+
+function loadexams() {
+   
+
+    var ajaxConfig = {
+        method:'GET',
+        url: 'http://localhost:8080/api/income_records',
+        async: true
+    };
+
+    $.ajax(ajaxConfig).done(function (exams, status, jqXHR) {
+        $("#tblexams2 tbody tr").remove();
+        for (var i = 0; i < exams.length; i++) {
+            let eid=exams[i].id;
+
+                        var html = '<tr>' +
+                            '<td>' + exams[i].description +'</td>' +
+                            '<td>' + exams[i].amount +'</td>' +
+                            '<td>' + exams[i].date +'</td>' +
+                            '</tr>';
+                        $("#tblexams2 tbody").append(html);
+
+                    }
+    }).fail(function (jqXHR, status, error) {
+      
+        console.log(error)
+    })
+};
+
+function loadexp() {
+   
+
+   var ajaxConfig = {
+       method:'GET',
+       url: 'http://localhost:8080/api/expense_records',
+       async: true
+   };
+
+   $.ajax(ajaxConfig).done(function (exps, status, jqXHR) {
+       $("#tblexams3 tbody tr").remove();
+       for (var i = 0; i < exps.length; i++) {
+           
+
+                       var html = '<tr>' +
+                           '<td>' + exps[i].description +'</td>' +
+                           '<td>' + exps[i].amount +'</td>' +
+                           '<td>' + exps[i].date +'</td>' +
+                           '</tr>';
+                       $("#tblexams3 tbody").append(html);
+
+                   }
+   }).fail(function (jqXHR, status, error) {
+       console.log(error)
+   })
+};
+
+function loadCounts() {
+   
+
+   var ajaxConfig = {
+       method:'GET',
+       url: 'http://localhost:8080/api/income&expense',
+       async: true
+   };
+
+   $.ajax(ajaxConfig).done(function (counts, status, jqXHR) {
+       //$("#tblexams3 tbody tr").remove();
+
+       let tototherexp=counts.totalOtherExpenses;
+       let totsal=counts.salariesPaid;
+       let totexp=Number(tototherexp)+Number(totsal);
+       let totinc=counts.grossIncome;
+       let totprof=Number(totinc)-Number(totexp);
+
+       document.getElementById("tototherexp").innerHTML=tototherexp;
+       document.getElementById("totsal").innerHTML=totsal;
+       document.getElementById("totinc").innerHTML=totinc;
+       document.getElementById("totexp").innerHTML=totexp;
+       document.getElementById("totprof").innerHTML=totprof;
+       
+   }).fail(function (jqXHR, status, error) {
+       console.log(error)
+   })
+};
+
+    </script>
 
     
 

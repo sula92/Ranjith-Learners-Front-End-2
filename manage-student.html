@@ -173,7 +173,7 @@
             <div class="form-group col-md-4">
               <label for="inputState">Branch</label>
               <select id="branch" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Gampha</option>
                 <option>...</option>
               </select>
             </div>
@@ -276,10 +276,51 @@
     </main>
   </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="dashboard.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/exam-report-controller.js"></script>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+        
+
+        <script>
+$(document).ready(function () {
+    loadexams(0);
+    //loadexp(0);
+    //loadCounts(0);
+})
+
+function loadexams() {
+   
+
+  alert("xxxxxxxxxxxxxx");
+
+    var ajaxConfig = {
+        method:'GET',
+        url: 'http://localhost:8080/api/branches',
+        async: true
+    };
+
+    $.ajax(ajaxConfig).done(function (branches, status, jqXHR) {
+
+      alert("ddddddd");
+       // $("#tblexams2 tbody tr").remove();
+        for (var i = 0; i < branches.length; i++) {
+            //let eid=exams[i].id;
+
+            alert(branches[i].name);
+
+                        var html = 
+                            '<option>' + branches[i].name +'</option>';
+                        $("#branch").append(html);
+
+                    }
+    }).fail(function (jqXHR, status, error) {
+      
+        console.log(error)
+    })
+};
+        </script>
+
+
     </body>
 </html>
