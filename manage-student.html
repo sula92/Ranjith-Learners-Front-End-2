@@ -133,18 +133,14 @@
         </div>
       </div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <label for="exampleInputItemId"><b>Date</b> : 2022/12/20</label>
-            <label for="exampleInputItemId"><b>Time</b> : 10.30</label>
+            <label for="exampleInputItemId"><b>Date</b> : <span id="date">2022/12/20</span></label>
+            <label for="exampleInputItemId"><b>Time</b> : <span id="time">10.30</span></label>
         </div>
       <div class="container-fluid">
         <form>
           <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Student ID</label>
-              <input type="text" class="form-control" id="inputEmail4" placeholder="ST001">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Name</label>s
+            <div class="form-group col-md-12">
+              <label for="inputPassword4">Student Name</label>
               <input type="text" class="form-control" id="inputPassword4" placeholder="Sulakkhana Dissanayake">
             </div>
           </div>
@@ -173,8 +169,7 @@
             <div class="form-group col-md-4">
               <label for="inputState">Branch</label>
               <select id="branch" class="form-control">
-                <option selected>Gampha</option>
-                <option>...</option>
+                
               </select>
             </div>
             <div class="form-group col-md-4">
@@ -284,15 +279,17 @@
 
         <script>
 $(document).ready(function () {
-    loadexams(0);
-    //loadexp(0);
-    //loadCounts(0);
+    //loadexams(0);
+    let A = Date.now();
+    $("#date").html(new Date().toDateString());
+    $("#time").html(new Date().toTimeString());
+    
 })
 
 function loadexams() {
    
 
-  alert("xxxxxxxxxxxxxx");
+  var A = Date.now();  
 
     var ajaxConfig = {
         method:'GET',
@@ -302,12 +299,12 @@ function loadexams() {
 
     $.ajax(ajaxConfig).done(function (branches, status, jqXHR) {
 
-      alert("ddddddd");
+      
        // $("#tblexams2 tbody tr").remove();
         for (var i = 0; i < branches.length; i++) {
             //let eid=exams[i].id;
 
-            alert(branches[i].name);
+           
 
                         var html = 
                             '<option>' + branches[i].name +'</option>';
