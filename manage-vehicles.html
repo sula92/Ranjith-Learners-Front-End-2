@@ -28,7 +28,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-
     <style>
      
     </style>
@@ -142,46 +141,55 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Exam</h1>
+        <h1 class="h2">Manage Vehicles</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-success">+ New Exam</button>
+            <button type="button" class="btn btn-success" id="btnNew">+ New Vehicle</button>
         </div>
       </div>
       <div class="container-fluid">
         <form>
             <div class="row">
             <div class="col-md-5 col-lg-5">
-                <div class="form-group">
-                  <i class="fa fa-shopping-cart"></i>
-                    <label for="ExamId">Enter Exam Id</label>
-                    <input type="text" class="form-control" id="id">
-                </div>
-                <div class="form-group">
-                    <label for="ExamDate">Enter Date</label>
-                    <input type="date" class="form-control" id="date">
-                </div>
-                <div class="form-group">
-                  <label for="ExamTime">Enter Time</label>
-                  <input type="time" class="form-control" id="time">
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">Vehicle ID</label>
+                  <input type="text" readonly="true" class="form-control" id="id">
               </div>
                 <div class="form-group">
-                    <label for="ExamVenue">Enter Venue</label>
-                    <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  <i class=""></i>
+                    <label for="ExamId">Vehicle Number</label>
+                    <input type="text" class="form-control" id="number">
                 </div>
+                <div class="form-group">
+                  <label for="ExamVenue">Type & Model</label>
+                  <input type="text" class="form-control" id="tm" aria-describedby="emailHelp">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              </div>
+                <div class="form-group">
+                  <label for="inputState">Branch</label>
+                  <select id="branch" class="form-control">
+                    <option id="bra"></option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputState">Supplier</label>
+                  <select id="Supplier" class="form-control">
+                    <option id="sup"></option>
+                  </select>
+                </div>
+            
                 <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-warning">Clear</button>
             </div>
             <div class="col-md-7 col-lg-7">
-                <table id="tblexams2" class="table">
+                <table id="tblvehicles2" class="table">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Venue</th>
-                        <th scope="col">Report</th>
-                        <th scope="col">Delete</th>
+                        <th scope="col">Nunmber</th>
+                        <th scope="col">Type & Model</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Supplier</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -207,30 +215,26 @@
 
         <div class="statistics-details d-flex align-items-center justify-content-between">
           <div>
-            <p class="statistics-title">Total Participants</p>
-            <h3 class="rate-percentage" id="part">92.53%</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+            <p class="statistics-title">Gampaha</p>
+            <h3 class="rate-percentage" id="gam">2</h3>
+            <p class="text-danger d-flex"><i class="mdi mdi-menu-down" ></i><span id="gamPer">50%</span></p>
           </div>
           <div>
-            <p class="statistics-title">Total Pass</p>
-            <h3 class="rate-percentage" id="pass">7,682</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+            <p class="statistics-title">Hiripitiya</p>
+            <h3 class="rate-percentage" id="hiri">1</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-menu-up" ></i><span id="hirikPer">25%</span></p>
           </div>
           <div>
-            <p class="statistics-title">Total Fail</p>
-            <h3 class="rate-percentage" id="fail">68.8</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+            <p class="statistics-title">Yakkala</p>
+            <h3 class="rate-percentage" id="yak">1</h3>
+            <p class="text-danger d-flex"><i class="mdi mdi-menu-down" ></i><span id="yakPer">25%</span></p>
           </div>
           <div class="d-none d-md-block">
-            <p class="statistics-title" id="ab">Total Absent</p>
-            <h3 class="rate-percentage">2m:35s</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+            <p class="statistics-title">Total Vehicles</p>
+            <h3 class="rate-percentage" id="tot">4</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>100%</span></p>
           </div>
-          <div class="d-none d-md-block">
-            <p class="statistics-title">New Candidates</p>
-            <h3 class="rate-percentage">68.8</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-          </div>
+          
         
         </div>
 
@@ -248,7 +252,7 @@
         <script src="dashboard.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/exam-controller.js"></script>
+    <script src="js/vehicle-controller.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
 
     <!-- pie chart start here........................................................................................... -->
@@ -260,11 +264,17 @@
 
       function drawChart() {
 
+        let x=parseInt(document.getElementById("gam").innerHTML);
+        let y=parseInt(document.getElementById("yak").innerHTML);
+        let z=parseInt(document.getElementById("hiri").innerHTML);
+        let q=parseInt(document.getElementById("tot").innerHTML);
+
+
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Percentage'],
-          ['Pass',     11],
-          ['Fail',      2],
-          ['Absent',  2],
+          ['Gampaha',     x],
+          ['Hiripitiya',      y],
+          ['Yakkala',  z],
          
         ]);
 
@@ -288,12 +298,19 @@
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
+
+        let x=parseInt(document.getElementById("gam").innerHTML);
+        let y=parseInt(document.getElementById("yak").innerHTML);
+        let z=parseInt(document.getElementById("hiri").innerHTML);
+        let q=parseInt(document.getElementById("tot").innerHTML);
+
+
       var data = google.visualization.arrayToDataTable([
         ["STATUS", "COUNT", { role: "style" } ],
-		    ["TOTAL", 10, "black"],
-        ["PASS", 4, "blue"],
-        ["FAIL", 2, "red"],
-        ["ABSENT", 4, "green"]
+		    ["TOTAL", q, "black"],
+        ["GAMPAHA", x, "blue"],
+        ["HIRIPITIYA", y, "red"],
+        ["YAKKALA", z, "green"]
       ]);
 
       var view = new google.visualization.DataView(data);
@@ -326,11 +343,78 @@
     </div>
 
     <script>
+
+function loadBranches() {
+ 
+     var ajaxConfig = {
+         method:'GET',
+         url: 'http://localhost:8080/api/branches',
+         async: true
+     };
+ 
+     $.ajax(ajaxConfig).done(function (branches, status, jqXHR) {
+ 
+         for (var i = 0; i < branches.length; i++) {
+             
+                         var html = 
+                             '<option>' + branches[i].name +'</option>';
+                         $("#branch").append(html);
+ 
+                     }
+     }).fail(function (jqXHR, status, error) {
+       
+         console.log(error)
+     })
+ };
+
+ function loadSuppliers() {
+ 
+ var ajaxConfig = {
+     method:'GET',
+     url: 'http://localhost:8080/api/suppliers',
+     async: true
+ };
+
+ $.ajax(ajaxConfig).done(function (suppliers, status, jqXHR) {
+
+     for (var i = 0; i < suppliers.length; i++) {
+         
+                     var html = 
+                         '<option>' + suppliers[i].name +'</option>';
+                     $("#supplier").append(html);
+
+                 }
+ }).fail(function (jqXHR, status, error) {
+   
+     console.log(error)
+ })
+};
+
+     
+
       $(document).ready(function(){
+
+        loadBranches();
+        loadSuppliers();
+
       $("#tog1").click(function(){
        $("dd1").toggle();
        });
      });
+
+
+     $("#btnNew").click(function () {
+
+$("#id").val("");
+$("#number").val("");
+$("#tm").val("");
+$("#branch").val("");
+$("#supplier").val("");
+
+
+$("#btnSave").text("Submit");
+});
+
     </script>
 
     

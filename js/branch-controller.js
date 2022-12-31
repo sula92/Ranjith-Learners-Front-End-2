@@ -82,9 +82,9 @@ function loadCounts() {
 
         $("#tot").html(Number(hiri)+Number(gam)+Number(yak));
 
-        var gamPer=Number(gam)/Number(hiri)+Number(gam)+Number(yak)*100+'%';
-        var yakmPer=Number(yak)/Number(hiri)+Number(gam)+Number(yak)*100+'%';
-        var hiriPer=Number(hiri)/Number(hiri)+Number(gam)+Number(yak)*100+'%';
+        var gamPer=Number(gam)/(Number(hiri)+Number(gam)+Number(yak)*100+'%');
+        var yakmPer=Number(yak)/(Number(hiri)+Number(gam)+Number(yak)*100+'%');
+        var hiriPer=Number(hiri)/(Number(hiri)+Number(gam)+Number(yak)*100+'%');
 
         $("#gamPer").html(gamPer);
         $("#yakPer").html(yakmPer);
