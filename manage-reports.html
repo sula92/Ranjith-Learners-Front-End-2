@@ -28,7 +28,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
+
     <style>
+
+        #main
+        {
+          background: url('fast1.gif') no-repeat;
+          background-size:cover;
+          font-family:Arial;
+          color:white;
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+        }
      
     </style>
     <!-- Custom styles for this template -->
@@ -139,67 +150,67 @@
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Other-Expensess</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-success">+ New Other-Expenses</button>
-        </div>
+        <h1 class="h2">Ad Hoc Reports</h1>
+        
       </div>
       <div class="container-fluid">
-        <form>
-            <div class="row">
-            <div class="col-md-5 col-lg-5">
-                <div class="form-group">
-                  <i class=""></i>
-                    <label for="Other-ExpensesId">Enter Other-Expenses Id</label>
-                    <input type="text" class="form-control" id="id">
-                </div>
-                <div class="form-group">
-                    <label for="Other-ExpensesDate">Enter Date</label>
-                    <input type="date" class="form-control" id="date">
-                </div>
-                
-                <div class="form-group">
-                    <label for="Other-ExpensesVenue">Description</label>
-                    <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-                <div class="form-group">
-                  <label for="Other-ExpensesVenue">Amount</label>
-                  <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-              </div>
-                <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-warning">Clear</button>
-            </div>
-            <div class="col-md-7 col-lg-7">
-                <table id="tblOther-Expensess2" class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    </tbody>
-                </table>
-                <div class="card-footer">
-                    <ul class="pagination pagination-sm m-0">
-                        <li class="page-item"><a class="page-link" href="#"><<</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">>></a></li>
-                    </ul>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
+              <a href="report-income&expense.html">
+                <img src="i&ex.jpg" class="w3-border w3-border-blue w3-round-large" alt="Nature" style="width:100%; height:200px">  
+                <div class="caption">
+                 <center><h3>Income & Expense Reports</h3></center>
                 </div>
-
+              </a>
             </div>
+          </div>
+          <div class="col-md-3">
+            <div class="" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
+              <a href="report-session.html">
+                <img src="tictactoe1.jpg" class="w3-border w3-border-blue w3-round-large" alt="Nature" style="width:100%; height:200px">  
+                <div class="caption">
+                 <center><h3>Daily Session Report</h3></center>
+                </div>
+              </a>
             </div>
-       </form>
+          </div>
+          <div class="col-md-3">
+            <div class="w3-border-blue" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
+              <a href="report-student.html">
+                <img src="stdrep.jpg" class="w3-border w3-border-blue w3-round-large" alt="Fjords" style="width:100%; height:200px">
+                <div class="caption">
+                 <center><h3>Student Report</h3></center>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="w3-border-blue" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
+              <a href="report-payments.html">
+                <img src="payment.jpg" class="w3-border w3-border-blue w3-round-large" alt="Fjords" style="width:100%; height:200px">
+                <div class="caption">
+                 <center><h3>Payments Report</h3></center>
+                </div>
+              </a>
+            </div>
+          </div>
+           <div class="row">
+          <div class="col-md-3">
+            <div>
+              
+                <div style="width:100%; height:200px"></div>  
+            </div>
+          </div>
+          <div class="container">
+          
+          <div class="w3-container ">
+        <div style="height:60px; width:100%"></div>
+      </div>
+        
       </div>
 
       
@@ -208,30 +219,6 @@
   </div>
 </div>
 
-
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="dashboard.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/Other-Expenses-controller.js"></script>
-    <script src="node_modules/axios/dist/axios.min.js"></script>
-
-    <!-- pie chart start here........................................................................................... -->
-
-    
-
-    <script>
-      $(document).ready(function(){
-      $("#tog1").click(function(){
-       $("dd1").toggle();
-       });
-     });
-    </script>
-
-    
 
  </body>
 </html>

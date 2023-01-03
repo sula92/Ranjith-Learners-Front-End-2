@@ -116,6 +116,9 @@ $("#btnSave").click(function () {
                         '</tr>';
                     $("#tblexams2 tbody").append(html);
                     $("#examId, #examName, #examAddress").val("");
+                    if(response){
+                        myReload();
+                    }
                     $("#examId").focus();
     }).fail(function (jqXHR, status, error) {
         console.log(error)
@@ -242,4 +245,8 @@ function initializePagination(totalElement) {
     })
 
 }
-//
+
+function myReload() {
+    window.location.reload();
+  }
+

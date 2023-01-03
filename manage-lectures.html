@@ -141,46 +141,70 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Other-Expensess</h1>
+        <h1 class="h2">Manage Lectures</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-success">+ New Other-Expenses</button>
+            <button type="button" class="btn btn-success" id="btnNew">+ New Lecture</button>
         </div>
       </div>
       <div class="container-fluid">
         <form>
             <div class="row">
             <div class="col-md-5 col-lg-5">
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">Lecture ID</label>
+                  <input type="text" readonly="true" class="form-control" id="lec">
+              </div>
+              <div class="form-group">
+                <label for="ExamVenue">Lesson</label>
+                <input type="text" class="form-control" id="les" aria-describedby="emailHelp">
+                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              </div>
                 <div class="form-group">
                   <i class=""></i>
-                    <label for="Other-ExpensesId">Enter Other-Expenses Id</label>
-                    <input type="text" class="form-control" id="id">
+                    <label for="ExamId">Date</label>
+                    <input type="date" class="form-control" id="dat">
                 </div>
                 <div class="form-group">
-                    <label for="Other-ExpensesDate">Enter Date</label>
-                    <input type="date" class="form-control" id="date">
-                </div>
-                
-                <div class="form-group">
-                    <label for="Other-ExpensesVenue">Description</label>
-                    <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-                <div class="form-group">
-                  <label for="Other-ExpensesVenue">Amount</label>
-                  <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
+                  <label for="ExamVenue">Time</label>
+                  <input type="time" class="form-control" id="tim" aria-describedby="emailHelp">
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
+                
+                <div class="form-group">
+                  <label for="ExamVenue">Venue</label>
+                  <input type="text" class="form-control" id="ven" aria-describedby="emailHelp">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+            
+                <div class="form-group">
+                    <label for="ExamVenue">Instructor</label>
+                    <select class="form-control" id="ins" aria-describedby="emailHelp">
+                      <option>Sula</option>
+                    </select>                  
+                </div>
                 <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-warning">Clear</button>
             </div>
             <div class="col-md-7 col-lg-7">
-                <table id="tblOther-Expensess2" class="table">
+              <div class="row">
+                <div class="form-group col-md-12 col-lg-10">
+                  <label for="ExamVenue">Add Student</label>
+                  <select class="form-control"  id="std" aria-describedby="emailHelp">
+                    <option>Sula</option>
+                  </select>                  
+              </div>
+              </div>
+                <table id="tblbranches2" class="table">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">Lesson</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Venue</th>
+                        <th scope="col">Instructor</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -202,7 +226,26 @@
        </form>
       </div>
 
-      
+      <div class="container-fluid bg-light" style="margin-top: 20px;">
+
+        <table id="tblbranches2" class="table">
+          <thead>
+          <tr>
+              <th scope="col">Student ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Branch</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Email</th>
+              <th scope="col">Send Email</th>
+              <th scope="col">Remove</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+      </table>
+
+      </div>
       
     </main>
   </div>
@@ -216,19 +259,46 @@
         <script src="dashboard.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/Other-Expenses-controller.js"></script>
+    <script src="js/lecture-controller.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
 
     <!-- pie chart start here........................................................................................... -->
 
-    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      
 
+    </Script>
+
+   
+
+
+   
     <script>
       $(document).ready(function(){
+
+       $('#std').attr("disabled", true);
+
       $("#tog1").click(function(){
        $("dd1").toggle();
        });
      });
+
+
+     $("#btnNew").click(function () {
+
+         $('#std').attr("disabled", true);
+
+         $("#id").val("");
+         $("#name").val("");
+         $("#add").val("");
+         $("#doe").val("");
+         $("#email").val("");
+         $("#contact").val("");
+
+         $("#btnSave").text("Submit");
+     });
+
     </script>
 
     

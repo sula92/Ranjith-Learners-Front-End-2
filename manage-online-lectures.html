@@ -141,46 +141,48 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Other-Expensess</h1>
+        <h1 class="h2">Manage Online Lectures</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-success">+ New Other-Expenses</button>
+            <button type="button" class="btn btn-success" id="btnNew">+ New Video</button>
         </div>
       </div>
       <div class="container-fluid">
         <form>
             <div class="row">
             <div class="col-md-5 col-lg-5">
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">Leson ID</label>
+                  <input type="text" readonly="true" class="form-control" id="id">
+              </div>
                 <div class="form-group">
                   <i class=""></i>
-                    <label for="Other-ExpensesId">Enter Other-Expenses Id</label>
-                    <input type="text" class="form-control" id="id">
+                    <label for="ExamId">Lesson Name</label>
+                    <input type="text" class="form-control" id="nam">
                 </div>
                 <div class="form-group">
-                    <label for="Other-ExpensesDate">Enter Date</label>
-                    <input type="date" class="form-control" id="date">
-                </div>
-                
-                <div class="form-group">
-                    <label for="Other-ExpensesVenue">Description</label>
-                    <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-                <div class="form-group">
-                  <label for="Other-ExpensesVenue">Amount</label>
-                  <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
+                  <label for="ExamVenue">Date</label>
+                  <input type="date" class="form-control" id="dat" aria-describedby="emailHelp">
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
+                <div class="form-group">
+                    <label for="ExamDate">Add Video</label>
+                    <input type="file" class="form-control" id="add">
+                </div>
+                
                 <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-warning">Clear</button>
             </div>
             <div class="col-md-7 col-lg-7">
-                <table id="tblOther-Expensess2" class="table">
+                <table id="tblbranches2" class="table">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">Lesson</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Video</th>
+                        
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -216,7 +218,7 @@
         <script src="dashboard.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/Other-Expenses-controller.js"></script>
+    <script src="js/branch-controller.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
 
     <!-- pie chart start here........................................................................................... -->
@@ -229,6 +231,20 @@
        $("dd1").toggle();
        });
      });
+
+
+     $("#btnNew").click(function () {
+
+         $("#id").val("");
+         $("#name").val("");
+         $("#add").val("");
+         $("#doe").val("");
+         $("#email").val("");
+         $("#contact").val("");
+
+         $("#btnSave").text("Submit");
+     });
+
     </script>
 
     

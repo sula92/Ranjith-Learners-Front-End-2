@@ -107,7 +107,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-Exam.html">
+            <a class="nav-link" href="manage-branches.html">
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span data-feather="file"></span>
               <i class="fa fa-institution" style="font-size:19px;color:red">&nbsp;</i>Manage Branches
@@ -134,9 +134,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-Other-Expensess.html">
+            <a class="nav-link" href="manage-suppliers.html">
               <span data-feather="users"></span>
-              <i class="fa fa-ship" style="font-size:18px;color:red">&nbsp;</i>Manage Other-Expensess
+              <i class="fa fa-ship" style="font-size:18px;color:red">&nbsp;</i>Manage Suppliers
             </a>
           </li>
           <li class="nav-item">
@@ -199,8 +199,8 @@
             <div class="card bg-c-blue order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Students</h6>
-                    <h2 class="text-right"><i class="fa fa-group f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Total Registered Students<span class="f-right">351</span></p>
+                    <h2 class="text-right"><i class="fa fa-group f-left"></i><span>5</span></h2>
+                    <p class="m-b-0">Total Registered Students<span class="f-right"></span></p>
                 </div>
             </div>
         </div>
@@ -209,8 +209,8 @@
             <div class="card bg-c-green order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total License Issued</h6>
-                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed License<span class="f-right">351</span></p>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>3</span></h2>
+                    <p class="m-b-0">Completed License<span class="f-right"></span></p>
                 </div>
             </div>
         </div>
@@ -219,8 +219,8 @@
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Expenses</h6>
-                    <h2 class="text-right"><i class="fa fa-dollar f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Total Expenses<span class="f-right">351</span></p>
+                    <h2 class="text-right"><i class="fa fa-dollar f-left"></i><span>100000</span></h2>
+                    <p class="m-b-0">Total Expenses<span class="f-right"></span></p>
                 </div>
             </div>
         </div>
@@ -229,8 +229,8 @@
             <div class="card bg-c-pink order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Revenue</h6>
-                    <h2 class="text-right"><i class="fa fa-money f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Total Revenue<span class="f-right">351</span></p>
+                    <h2 class="text-right"><i class="fa fa-money f-left"></i><span>150000</span></h2>
+                    <p class="m-b-0">Total Revenue<span class="f-right"></span></p>
                 </div>
             </div>
         </div>
@@ -257,9 +257,9 @@
 
     var data = google.visualization.arrayToDataTable([
       ['Task', 'Percentage'],
-      ['Pass',     11],
-      ['Fail',      2],
-      ['Absent',  2],
+      ['Pass',     3],
+      ['Fail',     1],
+      ['Absent',  1],
      
     ]);
 
@@ -285,10 +285,10 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
     ["STATUS", "COUNT", { role: "style" } ],
-    ["TOTAL", 10, "black"],
-    ["PASS", 4, "blue"],
-    ["FAIL", 2, "red"],
-    ["ABSENT", 4, "green"]
+    ["TOTAL", 5, "black"],
+    ["PASS", 3, "blue"],
+    ["FAIL", 1, "red"],
+    ["ABSENT", 1, "green"]
   ]);
 
   var view = new google.visualization.DataView(data);
