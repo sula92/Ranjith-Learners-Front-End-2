@@ -28,18 +28,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-
     <style>
-
-        #main
-        {
-          background: url('fast1.gif') no-repeat;
-          background-size:cover;
-          font-family:Arial;
-          color:white;
-          background-attachment: fixed;
-          background-repeat: no-repeat;
-        }
      
     </style>
     <!-- Custom styles for this template -->
@@ -150,58 +139,69 @@
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Manage Online Lectures</h1>
-        
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-success" id="btnNew">+ New Video</button>
+        </div>
       </div>
       <div class="container-fluid">
+        <form>
+            <div class="row">
+            <div class="col-md-5 col-lg-5">
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">Leson ID</label>
+                  <input type="text" readonly="true" class="form-control" id="id">
+              </div>
+                <div class="form-group">
+                  <i class=""></i>
+                    <label for="ExamId">Lesson Name</label>
+                    <input type="text" class="form-control" id="nam">
+                </div>
+                <div class="form-group">
+                  <label for="ExamVenue">Date</label>
+                  <input type="date" class="form-control" id="dat" aria-describedby="emailHelp">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              </div>
+                <div class="form-group">
+                    <label for="ExamDate">Add Video</label>
+                    <input type="file" class="form-control" id="add">
+                </div>
+                
+                <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-warning">Clear</button>
+            </div>
+            <div class="col-md-7 col-lg-7">
+                <table id="tblbranches2" class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Lesson</th>
+                        <th scope="col">Added Date</th>
+                        <th scope="col">Video</th>
+                        
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-        <div class="row">
-         
-          <div class="col-md-4">
-            <div class="" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
-              <a href="https://studio.youtube.com/channel/UCLsnfoLao_sB67mb5427vnw">
-                <img src="img-addvideo.jpg" class="w3-border w3-border-blue w3-round-large" alt="Nature" style="width:100%; height:200px">  
-                <div class="caption">
-                 <center><h3>Add Videos</h3></center>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <ul class="pagination pagination-sm m-0">
+                        <li class="page-item"><a class="page-link" href="#"><<</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">>></a></li>
+                    </ul>
                 </div>
-              </a>
+
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="w3-border-blue" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
-              <a href="https://search.cloud.coveo.com/rest/organizations/pxloqckpzcjr5hu7fvby3ywkooq/searchinterfaces/57fd58b0-bbe9-4120-a43b-9e6c1c173153/html">
-                <img src="img-searchvideo.jpg" class="w3-border w3-border-blue w3-round-large" alt="Fjords" style="width:100%; height:200px">
-                <div class="caption">
-                 <center><h3>Searc/Filter Videos</h3></center>
-                </div>
-              </a>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="w3-border-blue" onMouseOver="this.style.opacity='0.6'" onMouseOut="this.style.opacity='1'">
-              <a href="https://search.cloud.coveo.com/rest/organizations/pxloqckpzcjr5hu7fvby3ywkooq/searchinterfaces/57fd58b0-bbe9-4120-a43b-9e6c1c173153/edit#f[filetype]=html,pdf,YouTubePlaylist,YouTubeVideo&f[source]=Ranjith-Learners">
-                <img src="img-buildpage.jpg" class="w3-border w3-border-blue w3-round-large" alt="Fjords" style="width:100%; height:200px">
-                <div class="caption">
-                 <center><h3>Build Search Page</h3></center>
-                </div>
-              </a>
-            </div>
-          </div>
-           <div class="row">
-          <div class="col-md-3">
-            <div>
-              
-                <div style="width:100%; height:200px"></div>  
-            </div>
-          </div>
-          <div class="container">
-          
-          <div class="w3-container ">
-        <div style="height:60px; width:100%"></div>
-      </div>
-        
+       </form>
       </div>
 
       
@@ -210,6 +210,44 @@
   </div>
 </div>
 
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="dashboard.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/branch-controller.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+
+    <!-- pie chart start here........................................................................................... -->
+
+    
+
+    <script>
+      $(document).ready(function(){
+      $("#tog1").click(function(){
+       $("dd1").toggle();
+       });
+     });
+
+
+     $("#btnNew").click(function () {
+
+         $("#id").val("");
+         $("#name").val("");
+         $("#add").val("");
+         $("#doe").val("");
+         $("#email").val("");
+         $("#contact").val("");
+
+         $("#btnSave").text("Submit");
+     });
+
+    </script>
+
+    
 
  </body>
 </html>

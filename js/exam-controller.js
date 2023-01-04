@@ -82,7 +82,7 @@ $("#btnSave").click(function () {
     var time = $("#time").val()+':00';
     var venue = $("#venue").val();
 
-    alert(time);
+    //alert(time);
 
     if(($("#btnSave").text().localeCompare("Update"))==0){
         updateexam();
@@ -108,10 +108,13 @@ $("#btnSave").click(function () {
     };
 
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+
+       
         var html = '<tr>' +
                         '<td>' + exam.id +'</td>' +
                         '<td>' + exam.date +'</td>' +
                         '<td>' + exam.time +'</td>' +
+                        '<td>' + exam.venue +'</td>' +
                         '<td><i class="fas fa-trash-alt"></i></td>'+
                         '</tr>';
                     $("#tblexams2 tbody").append(html);
@@ -143,13 +146,13 @@ $("#tblexams2").delegate("tr","click", function () {
 function updateexam() {
     var id = $("#id").val();
     var date = $("#date").val();
-    var time = $("#time").val();
+    var time = $("#time").val()+':00';
     var venue = $("#venue").val();
 
     var exam={
         id : id,
-        name: date,
-        address: time,
+        date: date,
+        time: time,
         venue: venue
     }
     var ajaxConfig = {
@@ -159,6 +162,8 @@ function updateexam() {
         contentType: 'application/json',
         data:JSON.stringify(exam)
     };
+
+    alert(exam.time);
 
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
         $("#id").val("").focus();

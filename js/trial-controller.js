@@ -9,7 +9,7 @@ function loadexams() {
 
     var ajaxConfig = {
         method:'GET',
-        url: 'http://localhost:8080/api/exams',
+        url: 'http://localhost:8080/api/trials',
         async: true
     };
 
@@ -82,36 +82,37 @@ $("#btnSave").click(function () {
     var time = $("#time").val()+':00';
     var venue = $("#venue").val();
 
-    alert(time);
+    //alert(time);
 
     if(($("#btnSave").text().localeCompare("Update"))==0){
         updateexam();
         return;
     }
+  
 
-   
-
-    var exam = {
+    var trial = {
         "id": id,
         "date": date,
         "time": time,
         "venue": venue
     };
    
-
     var ajaxConfig = {
         method:'POST',
-        url: 'http://localhost:8080/api/exams',
+        url: 'http://localhost:8080/api/trials',
         async: true,
         contentType: 'application/json',
-        data:JSON.stringify(exam)
+        data:JSON.stringify(trial)
     };
 
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+
+        alert("FFFFFF");
         var html = '<tr>' +
-                        '<td>' + exam.id +'</td>' +
-                        '<td>' + exam.date +'</td>' +
-                        '<td>' + exam.time +'</td>' +
+                        '<td>' + trial.id +'</td>' +
+                        '<td>' + trial.date +'</td>' +
+                        '<td>' + trial.time +'</td>' +
+                        '<td>' + trial.venue +'</td>' +
                         '<td><i class="fas fa-trash-alt"></i></td>'+
                         '</tr>';
                     $("#tblexams2 tbody").append(html);
@@ -143,12 +144,12 @@ function updateexam() {
     var time = $("#time").val();
     var venue = $("#venue").val();
 
-    var exam={
-        id : id,
-        name: date,
-        address: time,
-        venue: venue
-    }
+    var exam = {
+        "id": id,
+        "date": date,
+        "time": time,
+        "venue": venue
+    };
     var ajaxConfig = {
         method:'PUT',
         url: 'http://localhost:8080/api/exams',
@@ -171,14 +172,14 @@ function updateexam() {
 
 
 $("#tblexams2").on("click", "tbody tr td:last-child i",function () {
-    if(confirm("Are sure you want to delete this exam ?")){
+    if(confirm("Are sure you want to delete this trial ?")){
         var row = $(this).parents("tr");
 
         //alert('http://localhost:8080/api/exams?id='+row.find("td:first-child").text());
 
         var ajaxConfig = {
             method:'DELETE',
-            url: 'http://localhost:8080/api/exams?id='+row.find("td:first-child").text(),
+            url: 'http://localhost:8080/api/trials?id='+row.find("td:first-child").text(),
             async: true
         };
 
