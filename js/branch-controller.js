@@ -18,25 +18,7 @@ function loadbranches() {
         for (var i = 0; i < branches.length; i++) {
             let eid=branches[i].id;
 
-            // tot=tot+1;
-
-            // if(ExamReportById[i].examResult=="PASS"){
-            //     pass=pass+1;
-                
-            // }
-
-            // if(ExamReportById[i].examResult=="FAIL"){
-            //     fail=fail+1;
-            // }
-
-            // if(ExamReportById[i].examResult=="ABSENT"){
-            //     ab=ab+1;
-            // }
-
-            // if(ExamReportById[i].examResult=="PENDING"){
-            //     pen=pen+1;
-            // }
-
+          
                         var html = '<tr>' +
                             '<td>' + branches[i].id +'</td>' +
                             '<td>' + branches[i].name +'</td>' +
@@ -49,11 +31,7 @@ function loadbranches() {
                             '</tr>';
                         $("#tblbranches2 tbody").append(html);
 
-                        // document.getElementById("pass").innerHTML=pass;
-                        // document.getElementById("part").innerHTML=tot;
-                        // document.getElementById("fail").innerHTML=fail;
-                        // document.getElementById("totab").innerHTML=ab;
-                        //document.getElementById("totpend").innerHTML=pen;
+                      
                     }
     }).fail(function (jqXHR, status, error) {
         console.log(error)

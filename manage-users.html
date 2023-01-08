@@ -37,7 +37,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">RANJITH LEARNERS</a>
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">LOCK-HOOD</a>
 </nav>
 
 <div class="container-fluid">
@@ -58,10 +58,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-branches.html">
+            <a class="nav-link" href="manage-factories.html">
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span data-feather="file"></span>
-              <i class="fa fa-institution" style="font-size:19px;color:red">&nbsp;</i>Manage Branches
+              <i class="fa fa-institution" style="font-size:19px;color:red">&nbsp;</i>Manage Factories
             </a>
           </li>
           <li class="nav-item">
@@ -72,60 +72,55 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-exams.html">
+            <a class="nav-link" href="manage-departments.html">
               <i class="menu-icon mdi mdi-floor-plan"></i>
               <span data-feather="file"></span>
-              <i class="fa fa-file-text" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Manage Exams
+              <i class="fa fa-file-text" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Manage Departments
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-trial.html">
+            <a class="nav-link" href="manage-units.html">
               <span data-feather="shopping-cart"></span>
-              <i class="fa fa-bus" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Manage Trials
+              <i class="fa fa-bus" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Manage Units
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-suppliers.html">
+            <a class="nav-link" href="raw-material-request.html">
+              <span data-feather="shopping-cart"></span>
+              <i class="fa fa-bus" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Raw Material Request
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="manage-inventories.html">
               <span data-feather="users"></span>
-              <i class="fa fa-ship" style="font-size:18px;color:red">&nbsp;</i>Manage Suppliers
+              <i class="fa fa-ship" style="font-size:18px;color:red">&nbsp;</i>Manage Inventories
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-vehicles.html">
+            <a class="nav-link" href="manage-kpis.html">
               <span data-feather="users"></span>
-              <i class="fa fa-motorcycle" style="font-size:18px;color:red">&nbsp;</i>Manage Vehicles
+              <i class="fa fa-motorcycle" style="font-size:18px;color:red">&nbsp;</i>Employee KPI
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-student.html">
+            <a class="nav-link" href="manage-incomes.html">
               <span data-feather="bar-chart-2"></span>
-              <i class="fa fa-graduation-cap" style="font-size:19px;color:red">&nbsp;</i>Manage Students<span class="sr-only">(current)</span>
+              <i class="fa fa-graduation-cap" style="font-size:19px;color:red">&nbsp;</i>Manage Incomes<span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-lectures.html">
+            <a class="nav-link" href="manage-expenses.html">
               <span data-feather="bar-chart-2"></span>
-              <i class="fa fa-book" style="font-size:19px;color:red">&nbsp;&nbsp;</i>Manage Lectures
+              <i class="fa fa-graduation-cap" style="font-size:19px;color:red">&nbsp;</i>Manage Expenses<span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="manage-online-lectures.html">
+            <a class="nav-link" href="manage-tasks.html">
               <span data-feather="bar-chart-2"></span>
-              <i class="fa fa-laptop" style="font-size:19px;color:red"></i>&nbsp;&nbsp;Manage Online Lectures
+              <i class="fa fa-book" style="font-size:19px;color:red">&nbsp;&nbsp;</i>Manage Tasks
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="manage-driving-sessions.html">
-              <span data-feather="bar-chart-2"></span>
-              <i class="fa fa-refresh" style="font-size:20px;color:red">&nbsp;&nbsp;</i>Manage Driving Sessions
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="manage-other-expenses.html">
-              <span data-feather="users"></span>
-              <i class="fa fa-money" style="font-size:18px;color:red">&nbsp;&nbsp;</i>Manage Other Expenses
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="manage-reports.html">
               <span data-feather="bar-chart-2"></span>
@@ -141,45 +136,67 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Trials</h1>
+        <h1 class="h2">Manage Users</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-success">+ New Trila</button>
+            <button type="button" class="btn btn-success" id="btnNew">+ New User</button>
         </div>
       </div>
       <div class="container-fluid">
         <form>
             <div class="row">
             <div class="col-md-5 col-lg-5">
-                <div class="form-group">
-                  <i class="fa fa-shopping-cart"></i>
-                    <label for="ExamId">Enter Trial Id</label>
-                    <input type="text" class="form-control" id="id">
-                </div>
-                <div class="form-group">
-                    <label for="ExamDate">Enter Date</label>
-                    <input type="date" class="form-control" id="date">
-                </div>
-                <div class="form-group">
-                  <label for="ExamTime">Enter Time</label>
-                  <input type="time" class="form-control" id="time">
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">ID</label>
+                  <input type="text" readonly="true" class="form-control" id="id">
+              </div>
+              <div class="form-group">
+                <i class=""></i>
+                  <label for="ExamId">Name</label>
+                  <input type="text" class="form-control" id="nam">
               </div>
                 <div class="form-group">
-                    <label for="ExamVenue">Enter Venue</label>
-                    <input type="text" class="form-control" id="venue" aria-describedby="emailHelp">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  <i class=""></i>
+                    <label for="ExamId">User Name</label>
+                    <input type="text" class="form-control" id="use">
                 </div>
+               
+                <div class="form-group">
+                    <label for="ExamDate">Password</label>
+                    <input type="password" class="form-control" id="pas">
+                </div>
+
+                <div class="form-group">
+                  <label for="inputState">privilege</label>
+                  <select id="pri" class="form-control">
+                    <option selected>USER</option>
+                    <option>ADMIN</option>
+                    <option>SUPER_ADMIN</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <i class=""></i>
+                    <label for="ExamId">Email</label>
+                    <input type="email" class="form-control" id="ema">
+                </div>
+
+            
                 <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-warning">Clear</button>
             </div>
             <div class="col-md-7 col-lg-7">
-                <table id="tblexams2" class="table">
+                <table id="tblfactories2" class="table">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Venue</th>
-                        <th scope="col">Report</th>
+                        <th scope="col">Name</th>
+                       
+                        <th scope="col">User Name</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Privilege</th>
+                        <th scope="col">Email</th>
+                        
                         <th scope="col">Delete</th>
                     </tr>
                     </thead>
@@ -204,31 +221,7 @@
 
       <div class="container-fluid bg-light" style="margin-top: 20px;">
 
-        <div class="statistics-details d-flex align-items-center justify-content-between">
-          <div>
-            <p class="statistics-title">Total Participants</p>
-            <h3 class="rate-percentage" id="part">3</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
-          </div>
-          <div>
-            <p class="statistics-title">Total Pass</p>
-            <h3 class="rate-percentage" id="pass">1</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span></span></p>
-          </div>
-          <div>
-            <p class="statistics-title">Total Fail</p>
-            <h3 class="rate-percentage" id="fail">1</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
-          </div>
-          <div class="d-none d-md-block">
-            <p class="statistics-title" id="ab">Total Absent</p>
-            <h3 class="rate-percentage">1</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
-          </div>
-          
-        
-        </div>
-
+       
       </div>
       
     </main>
@@ -243,89 +236,35 @@
         <script src="dashboard.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/trial-controller.js"></script>
+    <script src="js/user-controller.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
 
     <!-- pie chart start here........................................................................................... -->
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+     
 
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Percentage'],
-          ['Pass',     1],
-          ['Fail',      1],
-          ['Absent',  1],
-         
-        ]);
-
-        var options = {
-          title: 'The Pie Chart'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-
-    </Script>
-
-   
-
-   <!-- pie chart end here........................................................................................... -->
-
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ["STATUS", "COUNT", { role: "style" } ],
-		["TOTAL", 3, "black"],
-        ["PASS", 1, "blue"],
-        ["FAIL", 1, "red"],
-        ["ABSENT", 1, "green"]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        title: "THE COLUMN CHART",
-        width: 600,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-      chart.draw(view, options);
-  }
-  </script>
-
-    <div class="row">
-
-      <div class="col-md-2"></div>
-      <div class="col-md-5 bg-light" id="piechart" style="width: 900px; height: 500px;"></div>
-      <div class="col-md-4" id="columnchart_values" style="width: 800px; height: 265px;"></div>
-      <div class="col-md-1"></div>
-
-    </div>
-
-    <script>
+    
       $(document).ready(function(){
       $("#tog1").click(function(){
        $("dd1").toggle();
        });
      });
+
+
+     $("#btnNew").click(function () {
+
+         $("#id").val("");
+         $("#name").val("");
+         $("#add").val("");
+         $("#doe").val("");
+         $("#email").val("");
+         $("#contact").val("");
+
+         $("#btnSave").text("Submit");
+     });
+
     </script>
 
     

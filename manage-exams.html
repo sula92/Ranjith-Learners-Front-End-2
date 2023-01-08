@@ -152,7 +152,7 @@
             <div class="row">
             <div class="col-md-5 col-lg-5">
                 <div class="form-group">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i class=""></i>
                     <label for="ExamId">Enter Exam Id</label>
                     <input type="text" class="form-control" id="id">
                 </div>
@@ -208,28 +208,23 @@
         <div class="statistics-details d-flex align-items-center justify-content-between">
           <div>
             <p class="statistics-title">Total Participants</p>
-            <h3 class="rate-percentage" id="part">92.53%</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+            <h3 class="rate-percentage" id="part">5</h3>
+            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
           </div>
           <div>
             <p class="statistics-title">Total Pass</p>
-            <h3 class="rate-percentage" id="pass">7,682</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+            <h3 class="rate-percentage" id="pass">3</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span></span></p>
           </div>
           <div>
             <p class="statistics-title">Total Fail</p>
-            <h3 class="rate-percentage" id="fail">68.8</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+            <h3 class="rate-percentage" id="fail">1</h3>
+            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
           </div>
           <div class="d-none d-md-block">
             <p class="statistics-title" id="ab">Total Absent</p>
-            <h3 class="rate-percentage">2m:35s</h3>
-            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
-          </div>
-          <div class="d-none d-md-block">
-            <p class="statistics-title">New Candidates</p>
-            <h3 class="rate-percentage">68.8</h3>
-            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+            <h3 class="rate-percentage">1</h3>
+            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
           </div>
         
         </div>
@@ -262,9 +257,9 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Percentage'],
-          ['Pass',     11],
-          ['Fail',      2],
-          ['Absent',  2],
+          ['Pass',     3],
+          ['Fail',      1],
+          ['Absent',  1],
          
         ]);
 
@@ -290,10 +285,10 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ["STATUS", "COUNT", { role: "style" } ],
-		    ["TOTAL", 10, "black"],
-        ["PASS", 4, "blue"],
-        ["FAIL", 2, "red"],
-        ["ABSENT", 4, "green"]
+		    ["TOTAL", 5, "black"],
+        ["PASS", 3, "blue"],
+        ["FAIL", 1, "red"],
+        ["ABSENT", 1, "green"]
       ]);
 
       var view = new google.visualization.DataView(data);

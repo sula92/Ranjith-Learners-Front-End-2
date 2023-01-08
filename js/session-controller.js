@@ -1,7 +1,12 @@
 
 $(document).ready(function () {
     loadbranches(0);
+    //loadstudents(0);
     loadCounts(0);
+    LoadAllStdTODropDown();
+    //loadStudents();
+    $("#stu").prop('disabled', true);
+    $("#btnAddStd").prop('disabled', true);
 })
 
 function loadbranches() {
@@ -9,41 +14,23 @@ function loadbranches() {
 
     var ajaxConfig = {
         method:'GET',
-        url: 'http://localhost:8080/api/branches',
+        url: 'http://localhost:8080/api/lectures',
         async: true
     };
 
-    $.ajax(ajaxConfig).done(function (branches, status, jqXHR) {
+    $.ajax(ajaxConfig).done(function (resp, status, jqXHR) {
         $("#tblbranches2 tbody tr").remove();
-        for (var i = 0; i < branches.length; i++) {
-            let eid=branches[i].id;
+        for (var i = 0; i < resp.length; i++) {
+          
 
-            // tot=tot+1;
-
-            // if(ExamReportById[i].examResult=="PASS"){
-            //     pass=pass+1;
-                
-            // }
-
-            // if(ExamReportById[i].examResult=="FAIL"){
-            //     fail=fail+1;
-            // }
-
-            // if(ExamReportById[i].examResult=="ABSENT"){
-            //     ab=ab+1;
-            // }
-
-            // if(ExamReportById[i].examResult=="PENDING"){
-            //     pen=pen+1;
-            // }
 
                         var html = '<tr>' +
-                            '<td>' + branches[i].id +'</td>' +
-                            '<td>' + branches[i].name +'</td>' +
-                            '<td>' + branches[i].address +'</td>' +
-                            '<td>' + branches[i].dateOfEstablished +'</td>' +
-                            '<td>' + branches[i].email +'</td>' +
-                            '<td>' + branches[i].contact +'</td>' +
+                            '<td>' + resp[i].id +'</td>' +
+                            '<td>' + resp[i].lesson +'</td>' +
+                            '<td>' + resp[i].date +'</td>' +
+                            '<td>' + resp[i].time +'</td>' +
+                            '<td>' + resp[i].venue +'</td>' +
+                            '<td>' + resp[i].instructor +'</td>' +
                             //'<td><a href=\"manage-branches-report.html?id='+eid+'\"><i class="fas fa-file-alt" style="font-size:24px;color:blue"></a></i></td>'+
                             '<td><i class="fas fa-trash-alt" style="font-size:24px;color:red"></i></td>'+
                             '</tr>';
@@ -61,8 +48,6 @@ function loadbranches() {
 };
 
 function loadCounts() {
-   
-    //alert("rrrrrrrrrrrrrrr");
 
     var ajaxConfig3 = {
         method:'GET',
@@ -97,12 +82,12 @@ function loadCounts() {
 };
 $("#btnSave").click(function () {
 
-    var id = $("#id").val();
-    var name = $("#name").val();
-    var add = $("#add").val();
-    var doe = $("#doe").val();
-    var email = $("#email").val();
-    var contact = $("#contact").val();
+    var id = $("#lec").val();
+    var name = $("#les").val();
+    var add = $("#dat").val();
+    var doe = $("#tim").val();
+    var email = $("#ven").val();
+    var contact = $("#ins").val();
 
 
     if(($("#btnSave").text().localeCompare("Update"))==0){
@@ -112,36 +97,38 @@ $("#btnSave").click(function () {
     }
 
    
-    var branch={
-        id : id,
-        name: name,
-        address: add,
-        email: email,
-        dateOfEstablished: doe,
-        contact: contact
+    var lecture={
+      
+        lesson: name,
+        date: add,
+        time: doe+":00",
+        venue: email,
+        instructor: contact
         
     }
    
 
     var ajaxConfig = {
         method:'POST',
-        url: 'http://localhost:8080/api/branches',
+        url: 'http://localhost:8080/api/lectures',
         async: true,
         contentType: 'application/json',
-        data:JSON.stringify(branch)
+        data:JSON.stringify(lecture)
     };
 
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+       
         var html = '<tr>' +
-                        '<td>' + branch.id +'</td>' +
-                        '<td>' + branch.name +'</td>' +
-                        '<td>' + branch.address +'</td>' +
-                        '<td>' + branch.dateOfEstablished +'</td>' +
-                        '<td>' + branch.contact +'</td>' +
+                        '<td>' + lecture.id +'</td>' +
+                        '<td>' + lecture.lesson +'</td>' +
+                        '<td>' + lecture.date +'</td>' +
+                        '<td>' + lecture.time +'</td>' +
+                        '<td>' + lecture.venue +'</td>' +
+                        '<td>' + lecture.instructor +'</td>' +
                         '<td><i class="fas fa-trash-alt"></i></td>'+
                         '</tr>';
                     $("#tblbranches2 tbody").append(html);
-                    $("#name, #add, #doe, #email, #contact", "#id").val("");
+                    $("#lec, #les, #dat, #tim, #ven", "#ins").val("");
                     if(response){
                         myReload();
                     }
@@ -156,6 +143,8 @@ $("#btnSave").click(function () {
 $("#tblbranches2").delegate("tr","click", function () {
 
     $('#std').attr("disabled", false);
+    $("#stu").prop('disabled', false);
+    $("#btnAddStd").prop('disabled', false);
 
     var id = $(this).children("td").first().text();
     var name = $(this).children("td:nth-child(2)").first().text();
@@ -164,54 +153,56 @@ $("#tblbranches2").delegate("tr","click", function () {
     var email = $(this).children("td:nth-child(5)").first().text();
     var contact = $(this).children("td:nth-child(6)").first().text();
 
+    loadStudents(id);
 
-    $("#id").val(id);
-    $("#name").val(name).focus();
-    $("#add").val(address);
-    $("#doe").val(doe);
-    $("#email").val(email);
-    $("#contact").val(contact);
+
+    $("#lec").val(id);
+    $("#les").val(name).focus();
+    $("#dat").val(address);
+    $("#tim").val(doe);
+    $("#ven").val(email);
+    $("#ins").val(contact);
     $("#btnSave").text("Update");
 });
 
 async function updateexam() {
 
-    var id = $("#id").val();
-    var name = $("#name").val();
-    var address = $("#add").val();
-    var email = $("#email").val();
-    var doe = $("#doe").val();
-    var contact = $("#contact").val();
+    var id = $("#lec").val();
+    var name = $("#les").val();
+    var add = $("#dat").val();
+    var doe = $("#tim").val();
+    var email = $("#ven").val();
+    var contact = $("#ins").val();
 
     
 
-    var branch={
+    var lecture={
         id : id,
-        name: name,
-        address: address,
-        email: email,
-        dateOfEstablished: doe,
-        contact: contact
+        lesson: name,
+        date: address,
+        time: email+":00",
+        venue: doe,
+        instructor: contact
         
     }
 
     var ajaxConfig = {
         method:'PUT',
-        url: 'http://localhost:8080/api/branches/'+id,
+        url: 'http://localhost:8080/api/lectures/'+id,
         async: true,
         contentType: 'application/json',
-        data:JSON.stringify(branch)
+        data:JSON.stringify(lecture)
     };
 
     
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
     
-        $("#id").val("");
-        $("#name").val("").focus();
-        $("#doe").val("");
-        $("#email").val("");
-        $("#contact").val("");
-        $("#add").val("");
+        $("#lec").val("");
+        $("#les").val("").focus();
+        $("#dat").val("");
+        $("#tim").val("");
+        $("#ven").val("");
+        $("#ins").val("");
         $("#btnSave").text("Save");
         
         if(response){
@@ -227,14 +218,14 @@ async function updateexam() {
 
 
 $("#tblbranches2").on("click", "tbody tr td:last-child i",function () {
-    if(confirm("Are sure you want to delete this Branch ?")){
+    if(confirm("Are sure you want to delete this Lecture ?")){
         var row = $(this).parents("tr");
-
+       
         //alert('http://localhost:8080/api/branches?id='+row.find("td:first-child").text());
 
         var ajaxConfig = {
             method:'DELETE',
-            url: 'http://localhost:8080/api/branches/'+row.find("td:first-child").text(),
+            url: 'http://localhost:8080/api/lectures/'+row.find("td:first-child").text(),
             async: true
         };
 
@@ -247,13 +238,7 @@ $("#tblbranches2").on("click", "tbody tr td:last-child i",function () {
             alert("Fail")
         })
 
-        // $.ajax({
-        //     url: 'http://localhost:8080/api/branches?id='+row.find("td:first-child").text(),
-        //     type: 'DELETE',
-        //     success: function (result) {
-        //         alert('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-        //     }
-        // });
+       
     }   
 });
 
@@ -303,3 +288,192 @@ function initializePagination(totalElement) {
 function myReload() {
     window.location.reload();
   }
+
+  //....................................................................................................................................
+
+
+  $("#btnSave").click(function () {
+
+    var id = $("#lec").val();
+    var name = $("#les").val();
+    var add = $("#dat").val();
+    var doe = $("#tim").val();
+    var email = $("#van").val();
+    var contact = $("#ins").val();
+
+
+    if(($("#btnSave").text().localeCompare("Update"))==0){
+        updateexam();
+        //window.location.reload();
+        return;
+    }
+
+   
+    var std={
+      
+        studentId: $("#stu").val(),
+        lectureId: $("#lec").val()           
+    }
+   
+
+    var ajaxConfig = {
+        method:'POST',
+        url: 'http://localhost:8080/api/lectures/student/'+$("#stu").val()+"/"+$("#lec").val(),
+        async: true,
+        contentType: 'application/json',
+        data:JSON.stringify(std)
+    };
+
+    $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+       
+        var html = '<tr>' +
+                        '<td>' + std.studentId +'</td>' +
+                        '<td>' + std.lectureId +'</td>' +
+                        
+                        '<td><i class="fas fa-trash-alt"></i></td>'+
+                        '</tr>';
+                    $("#tblbranches3 tbody").append(html);
+                    $("#lec, #les, #dat, #tim, #ven", "#ins").val("");
+                    if(response){
+                        myReload();
+                    }
+                    $("#name").focus();
+    }).fail(function (jqXHR, status, error) {
+        console.log(error)
+    })
+
+});
+
+function LoadAllStdTODropDown() {
+    var ajaxConfig = {
+      method: "GET",
+      url: "http://localhost:8080/api/students",
+      async: true,
+    };
+
+    $.ajax(ajaxConfig).done(function (stds, status, jqXHR) {
+  
+        $("#stu").empty();
+        $("#stu").append("<option></option>");
+  
+        for (var i = 0; i < stds.length; i++) {
+          var option = document.createElement("option");
+          var student = document.getElementById("stu");
+          option.text = stds[i].name;
+          option.value = stds[i].id;
+          //student.appendChild(option);
+          $("#stu").append("<option>"+stds[i].id+'-'+stds[i].name+"</option>");
+        }
+      })
+      .fail(function (jqXHR, status, error) {
+        console.log(error);
+      });
+  }
+
+  function loadStudents(x) {
+  
+    if(x==null || x=="" || x==0){
+        x=1;
+    }
+
+    var ajaxConfig = {
+        method:'GET',
+        url: 'http://localhost:8080/api/lectures/'+x,
+        async: true
+    };
+
+    $.ajax(ajaxConfig).done(function (obj, status, jqXHR) {
+        
+        $("#tbl1 tbody tr").remove();
+
+        let stud=obj.students;
+        for (var i = 0; i < stud.length; i++) {
+
+           
+                        var html = '<tr>' +
+                            '<td>' + stud[i].id +'</td>' +
+                            '<td>' + stud[i].name +'</td>' +
+                            '<td>' + stud[i].branch.contact +'</td>' +
+                            '<td>' + stud[i].contact +'</td>' +
+                            '<td>' + stud[i].email +'</td>' +
+                            '<td><i class="fas fa-envelope" style="font-size:24px;color:blue"></i></td>'+
+                            //'<td><a href=\"manage-branches-report.html?id='+eid+'\"><i class="fas fa-file-alt" style="font-size:24px;color:blue"></a></i></td>'+
+                            '<td><i class="fas fa-trash-alt" style="font-size:24px;color:red"></i></td>'+
+                            '</tr>';
+                        $("#tbl1 tbody").append(html);
+
+                      
+                    }
+    }).fail(function (jqXHR, status, error) {
+        console.log(error)
+    })
+};
+
+$("#btnAddStd").click(function () {
+   
+    let x=$("#stu").val().substring(0,1);
+    let y=$("#lec").val();
+
+    alert(x);
+    alert(y);
+  
+    var ajaxConfig = {
+        method:'GET',
+        url: 'http://localhost:8080/api/lectures/add/'+x+'/'+y,
+        async: true
+    };
+
+    alert(ajaxConfig.url);
+
+    $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+    
+                    $("#lec, #les, #dat, #tim, #ven", "#ins").val("");
+                    if(response){
+                        var html = '<tr>' +
+                        '<td>' +x+'</td>' +
+                        '<td>' + response.name +'</td>' +
+                        '<td>' + response.branch.name +'</td>' +
+                        '<td>' + response.contact +'</td>' +
+                        '<td>' + response.email +'</td>' +
+                        
+                        '<td><i class="fas fa-envelope" style="font-size:24px;color:blue"></i></td>'+
+                        '<td><i class="fas fa-trash-alt"></i></td>'+
+                        '</tr>';
+                    $("#tbl1 tbody").append(html);
+                        //myReload();
+                        //window.location.href='manage-lectures.html'
+                    }
+                    $("#les").focus();
+    }).fail(function (jqXHR, status, error) {
+        console.log(error)
+    })
+
+});
+
+
+
+$("#tbl1").on("click", "tbody tr td:eq(5) i",function () {
+   
+    if(confirm("Are sure you want to send the Email ?")){
+        var row = $(this).parents("tr");
+       
+        alert('http://localhost:8080/api/mail/'+row.find("td:eq(4)").text()+'/'+'your next lecture is on'+$("#dat").val());
+
+        var ajaxConfig = {
+            method:'GET',
+            url: 'http://localhost:8080/api/mail/'+row.find("td:eq(4)").text()+'/'+'your next lecture is on'+$("#dat").val(),
+            async: true
+        };
+
+        $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
+           row.fadeOut(500, function () {
+               alert('Email Sent');
+           });
+           
+        }).fail(function (jqXHR, status, error) {
+            alert("Email Sent");
+        })
+
+       
+    }   
+});

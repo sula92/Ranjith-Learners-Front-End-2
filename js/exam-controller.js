@@ -163,7 +163,7 @@ function updateexam() {
         data:JSON.stringify(exam)
     };
 
-    alert(exam.time);
+    //alert(exam.time);
 
     $.ajax(ajaxConfig).done(function (response, status, jqXHR) {
         $("#id").val("").focus();
@@ -198,14 +198,12 @@ $("#tblexams2").on("click", "tbody tr td:last-child i",function () {
         }).fail(function (jqXHR, status, error) {
             alert("Fail")
         })
-
-        // $.ajax({
-        //     url: 'http://localhost:8080/api/exams?id='+row.find("td:first-child").text(),
-        //     type: 'DELETE',
-        //     success: function (result) {
-        //         alert('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-        //     }
-        // });
+        $("#id").val("").focus();
+        $("#date").val("");
+        $("#time").val("");
+        $("#venue").val("");
+        $("#btnSave").text("Save");
+        loadexams()
     }   
 });
 

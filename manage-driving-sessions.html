@@ -157,7 +157,7 @@
               </div>
               <div class="form-group">
                 <label for="ExamVenue">Description</label>
-                <input type="text" class="form-control" id="des" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="les" aria-describedby="emailHelp">
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
               </div>
                 <div class="form-group">
@@ -178,20 +178,20 @@
                 </div>
             
                 <div class="form-group">
-                    <label for="ExamVenue">Instructor</label>
-                    <select class="form-control" id="ins" aria-describedby="emailHelp">
-                      <option>Sula</option>
-                    </select>                  
+                  <label for="ExamVenue">Instructor</label>
+                  <input type="text" class="form-control" id="ins" aria-describedby="emailHelp">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
                 <button id="btnSave" type="button" class="btn btn-primary">Submit</button>
+                <button id="btnAddStd" type="button" class="btn btn-success">Add Student</button>
                 <button type="submit" class="btn btn-warning">Clear</button>
             </div>
             <div class="col-md-7 col-lg-7">
               <div class="row">
                 <div class="form-group col-md-12 col-lg-10">
                   <label for="ExamVenue">Add Student</label>
-                  <select class="form-control" id="std" aria-describedby="emailHelp">
-                    <option>Sula</option>
+                  <select class="form-control"  id="stu" aria-describedby="emailHelp">
+                   
                   </select>                  
               </div>
               </div>
@@ -199,7 +199,7 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Lesson</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Venue</th>
@@ -228,7 +228,7 @@
 
       <div class="container-fluid bg-light" style="margin-top: 20px;">
 
-        <table id="tblbranches2" class="table">
+        <table id="tbl1" class="table">
           <thead>
           <tr>
               <th scope="col">Student ID</th>
@@ -276,7 +276,9 @@
    
     <script>
       $(document).ready(function(){
-        $('#std').attr("disabled", true);
+
+       $('#std').attr("disabled", true);
+
       $("#tog1").click(function(){
        $("dd1").toggle();
        });
@@ -285,14 +287,16 @@
 
      $("#btnNew").click(function () {
 
-      $('#std').attr("disabled", true);
+         $('#std').attr("disabled", true);
+         $("#stu").prop('disabled', true);
+         $("#btnAddStd").prop('disabled', true);
 
-         $("#id").val("");
-         $("#name").val("");
-         $("#add").val("");
-         $("#doe").val("");
-         $("#email").val("");
-         $("#contact").val("");
+         $("#lec").val("");
+         $("#les").val("");
+         $("#dat").val("");
+         $("#tim").val("");
+         $("#ven").val("");
+         $("#ins").val("");
 
          $("#btnSave").text("Submit");
      });
